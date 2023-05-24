@@ -1,0 +1,16 @@
+{
+  "name": "dgj-back-end",
+  "version": "1.0.0",
+  "description": "**Digital Gardening Journal** *This app is created to give gardeners a digital place to plan, organize, and document their gardens from year to year.  It solves the problem of having notebooks filled with information with no way to easily recall or search.  It is also more eco friendly with less waste.*",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
