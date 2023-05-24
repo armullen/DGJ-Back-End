@@ -2,12 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3002
-const plantsController = require('/controllers/plants')  
+const plantsController = require('./controllers/plants')  
 const userController = require('./controllers/users');
 const commentsController = require('./controllers/comments');
 const journalEntriesController = require('./controllers/journalEntries');
-const cors = require('cors');
 
+const cors = require('cors');
 app.use(cors());
 
 app.use(express.json());
@@ -24,3 +24,6 @@ app.get('/*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`$ Server is listening on PORT ${PORT}`);
 })
+
+
+

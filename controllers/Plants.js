@@ -1,3 +1,6 @@
+const express = require('express');
+const router = express.Router();
+
 const seededData = [
     {
         type: "Tomato",
@@ -252,3 +255,5 @@ const seededData = [
         bestCompanionPlants: "Beans, Tomatoes, Celery"
     },
 ]
+
+module.exports = router;
