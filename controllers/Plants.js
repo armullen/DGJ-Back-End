@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { Plants } = require('../models');
 
 const seededData = [
     {
@@ -255,5 +256,33 @@ const seededData = [
         bestCompanionPlants: "Beans, Tomatoes, Celery"
     },
 ]
+
+router.get('/seed', async (req, res, next) => {
+    try {
+        await Plants.deleteMany({}),
+        await Plants.insertMany(seededData);
+        res.redirect('/plantlist');
+    } catch(err) {
+        next();
+    }
+})
+
+router.get('', async (req, res, next) => {
+    try {
+        let myPlants;
+        console.log(req.query);
+        if(req.query.search) {
+            myPlants = await Plants.find({type: req.query.search})
+            console.log(myPlants);
+        } else {
+            myPlants = await Plants.find({});
+            console.log(myPlants);
+        }
+        res.json(myPlants);
+    } catch(err) {
+        console.log(err);
+        next();
+    }
+})
 
 module.exports = router;

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const user = require('./Users');
 
-const plantsSchema = new mongoose.Schema (
+const plantsSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -37,6 +36,6 @@ const plantsSchema = new mongoose.Schema (
     }
 );
 
-const PlantList = mongoose.model('SeedData', plantsSchema);
+const Plants = mongoose.model('plant', plantsSchema);
 
-module.exports = PlantList;
+module.exports = Plants;
