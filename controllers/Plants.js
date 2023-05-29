@@ -257,6 +257,9 @@ const seededData = [
     },
 ]
 
+
+// ..........seeded route ..................
+
 router.get('/seed', async (req, res, next) => {
     try {
         await Plants.deleteMany({}),
@@ -266,6 +269,8 @@ router.get('/seed', async (req, res, next) => {
         next();
     }
 })
+
+// ................. index route ..................
 
 router.get('', async (req, res, next) => {
     try {
@@ -282,6 +287,20 @@ router.get('', async (req, res, next) => {
     } catch(err) {
         console.log(err);
         next();
+    }
+})
+
+// .................add route ..............
+
+router.post('', async (req, res, next) => {
+    try {
+        const newPlant = req.body
+        await Plants.create(req.body);
+        console.log(newPlant);
+        res.redirect('/plantlist')
+    } catch(err) {
+        console.log(err);
+            next();
     }
 })
 
