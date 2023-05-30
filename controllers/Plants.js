@@ -304,4 +304,40 @@ router.post('', async (req, res, next) => {
     }
 })
 
+// ..............show route.................
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        const myPlant = await Plants.findById(req.params.id);
+        res.json(myPlant)
+    } catch(err) {
+        console.log(err);
+        next();
+    }
+})
+
+// ..................... delete route ...............
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const deletedPlant = await Plants.findByIdAndDelete(req.params.id);
+        res.redirect('/plantlist');
+    } catch (err) {
+        console.log(err) 
+        next();
+    }
+})
+
+// .................... edit route ...................
+
+router.put('/:id', async (req, res, next) => {
+    try {
+        const updatedPlant = await Plants.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect(`/plantlist/${req.params.id}`);
+    } catch(err) {
+        console.log(err);
+        next();
+    }
+})
+
 module.exports = router;

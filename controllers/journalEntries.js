@@ -4,10 +4,13 @@ const { JournalEntries } = require('../models');
 
 const seededData = [
     {
-        date: "01/01/2023",
+        month: "January",
+        year: "2023",
         notes: "Your journal notes go here."
     }
 ]
+
+// ............... seeded route ...................
 
 router.get('/seed', async (req, res, next) => {
     try {
@@ -18,6 +21,8 @@ router.get('/seed', async (req, res, next) => {
         next();
     }
 })
+
+// ................. index route .....................
 
 router.get('', async (req, res, next) => {
     try {
@@ -31,6 +36,20 @@ router.get('', async (req, res, next) => {
             console.log(myJournal);
         }
         res.json(myJournal);
+    } catch(err) {
+        console.log(err);
+        next();
+    }
+})
+
+// ................. add route .....................
+
+router.post('', async (req, res, next) => {
+    try {
+        const newJournalEntry = req.body
+        await JournalEntries.create(req.body);
+        console.log(newJournalEntry);
+        res.redirect('/journal')
     } catch(err) {
         console.log(err);
         next();
