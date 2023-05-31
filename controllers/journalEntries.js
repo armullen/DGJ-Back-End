@@ -49,7 +49,7 @@ router.post('', async (req, res, next) => {
         const newJournalEntry = req.body
         await JournalEntries.create(req.body);
         console.log(newJournalEntry);
-        res.redirect('/journal')
+        res.json(newJournalEntry)
     } catch(err) {
         console.log(err);
         next();

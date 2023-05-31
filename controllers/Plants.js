@@ -333,7 +333,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res, next) => {
     try {
         const updatedPlant = await Plants.findByIdAndUpdate(req.params.id, req.body);
-        res.redirect(`/plantlist/${req.params.id}`);
+        res.json(`/plantlist/${req.params.id}`);
     } catch(err) {
         console.log(err);
         next();
