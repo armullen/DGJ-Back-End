@@ -56,4 +56,16 @@ router.post('', async (req, res, next) => {
     }
 })
 
+// ................ show route ..........................
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        const myJournalEntry = await JournalEntries.findById(req.params.id);
+        res.json(myJournalEntry);
+    } catch (err) {
+        console.log(err);
+        next();
+    }
+})
+
 module.exports = router;
